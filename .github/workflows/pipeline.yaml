@@ -19,4 +19,4 @@ jobs:
       - name: Test application
         run: npm run test
       - name: Build for production
-        run: npm build
+        run: npm run build
