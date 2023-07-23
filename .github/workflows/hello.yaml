@@ -3,7 +3,7 @@ name: Hello World!
 on:
   push:
     branches-ignore:
-      - master
+      - "master"
   pull_request:
     branches:
       - master
