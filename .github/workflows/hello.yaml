@@ -1,12 +1,6 @@
 name: Hello World!
 
-on:
-  push:
-    branches-ignore:
-      - "master"
-  pull_request:
-    branches:
-      - master
+on: [push]
 
 jobs:
   hello_world_job:
