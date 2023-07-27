@@ -1,21 +1,13 @@
 name: Hello World!
 
-on:
-  push:
-    branches-ignore:
-      - master
-    paths-ignore:
-      - '**'
-  pull_request:
-    branches:
-      - master
+on: [push]
 
 jobs:
   hello_world_job:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Check commit message
         id: check_commit_message
@@ -32,3 +24,7 @@ jobs:
         run: |
           echo "Running code on pull request to master"
           # Add your build/test commands here for pull requests to master
+      - name: print date and directory
+        run: |
+          date
+          ls
