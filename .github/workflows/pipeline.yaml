@@ -81,7 +81,7 @@ jobs:
           details: "sleep tight"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           avatarUrl: https://static.wikia.nocookie.net/theoffice/images/9/96/Prisonmike.png/revision/latest?cb=20100327171549
-          description: "The build and test couldn't succeeded and hence deployment would begin"
+          description: "The build and test passed and hence deployment would begin"
           footer: "Success"
           text: "..."
 
