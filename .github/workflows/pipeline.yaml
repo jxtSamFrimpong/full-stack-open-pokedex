@@ -58,6 +58,33 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      # - name: Github recent commiter
+      #   run: echo ${{ github.event.head_commit.author.email }}
+        
+      - name: FAILURE messages
+        if: ${{ failure() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: error
+          details: "get up man, you don't wanna get sacked"
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          avatarUrl: https://www.looper.com/img/gallery/the-office-character-you-are-based-on-your-zodiac-sign/intro-1635791132.jpg
+          description: "The build and test couldn't succedd and hence deployment would not commence"
+          footer: "Failed"
+          text: "..."
+        
+      - name: SUCCESS messages
+        if: ${{ success() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: "sleep tight"
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          avatarUrl: https://static.wikia.nocookie.net/theoffice/images/9/96/Prisonmike.png/revision/latest?cb=20100327171549
+          description: "The build and test passed and hence deployment would begin"
+          footer: "Success"
+          text: "..."
+
   
   tag_and_realease:
     needs: [simple_deployment_pipeline]
@@ -70,6 +97,7 @@ jobs:
         env:
           GITHUB_COMMITS: ${{ toJson(github.event.commits) }}
         run: echo "$GITHUB_COMMITS"
+
 
       - name: Bump version and push tag
         if: ${{ github.event_name == 'push'}} && "!contains($GITHUB_COMMITS, '#skip')"
