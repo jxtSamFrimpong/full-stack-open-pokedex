@@ -58,8 +58,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-      - name: Github recent commiter
-        run: echo ${{ github.event.head_commit.author.email }}
+      # - name: Github recent commiter
+      #   run: echo ${{ github.event.head_commit.author.email }}
         
       - name: FAILURE messages
         if: ${{ failure() }}
