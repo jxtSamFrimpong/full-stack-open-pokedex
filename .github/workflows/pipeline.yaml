@@ -58,6 +58,25 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Github recent commiter
+        run: echo ${{ github.event.head_commit.author.email }}
+        
+      - name: FAILURE messages
+        if: ${{ failure() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: error
+          details: "get up man, you don't wanna get sacked"
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+        
+      - name: SUCCESS messages
+        if: ${{ success() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: "sleep tight"
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
   
   tag_and_realease:
     needs: [simple_deployment_pipeline]
