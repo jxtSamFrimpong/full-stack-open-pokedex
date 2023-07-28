@@ -68,6 +68,10 @@ jobs:
           severity: error
           details: "get up man, you don't wanna get sacked"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          avatarUrl: https://www.looper.com/img/gallery/the-office-character-you-are-based-on-your-zodiac-sign/intro-1635791132.jpg
+          description: "The build and test couldn't succedd and hence deployment would not commence"
+          footer: "Failed"
+          text: "..."
         
       - name: SUCCESS messages
         if: ${{ success() }}
@@ -76,6 +80,10 @@ jobs:
           severity: info
           details: "sleep tight"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          avatarUrl: https://static.wikia.nocookie.net/theoffice/images/9/96/Prisonmike.png/revision/latest?cb=20100327171549
+          description: "The build and test couldn't succeeded and hence deployment would begin"
+          footer: "Success"
+          text: "..."
 
   
   tag_and_realease:
