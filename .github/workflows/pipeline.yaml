@@ -68,7 +68,7 @@ jobs:
           severity: error
           details: "get up man, you don't wanna get sacked"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          avatarUrl: https://www.looper.com/img/gallery/the-office-character-you-are-based-on-your-zodiac-sign/intro-1635791132.jpg
+          avatarUrl: https://pm1.aminoapps.com/6995/8cac9a3bd39487d8e052fef8bf6f3fc2afdaa314r1-1125-873v2_hq.jpg
           description: "The build and test couldn't succedd and hence deployment would not commence"
           footer: "Failed"
           text: "..."
