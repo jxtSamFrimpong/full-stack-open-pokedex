@@ -65,11 +65,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
-      - name: github context
+      
+      - name: github context commits
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          GITHUB_COMMITS: ${{ toJson(github.event.commits) }}
+        run: echo "$GITHUB_COMMITS"
 
       - name: Bump version and push tag
         if: ${{ github.event_name == 'push' }}
